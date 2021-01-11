@@ -21,6 +21,8 @@ expo init FirstApp
 **Start Expo server**
 npm start
 
+**Publish app**
+expo publish
 
 Metro Bundler >> JS bundler for RN
 Compiles JS files

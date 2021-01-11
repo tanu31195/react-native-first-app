@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "My first app",
+    "githubUrl": "https://github.com/tanu31195/react-native-first-app"
   }
 }
