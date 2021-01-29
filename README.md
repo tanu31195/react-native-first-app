@@ -29,17 +29,20 @@ expo publish
 Metro Bundler >> JS bundler for RN
 Compiles JS files
 
-Debugging
+## Debugging
 
 - Can use metro bundler device log to check
 - Remote debugging via chrome
 - Debug in VSCode (launch.json)
 
+## Components
+
 We use function components, simpler and light weight
 
 React Native has it's own components and will map them to native widgets  
-Example:  
-**View** (similar to div in web)  
+
+### View (similar to div in web)  
+
 iOS UIView  
 Android AndroidView
 
@@ -49,7 +52,51 @@ We can use **SafeAreaView** to make sure components are not covered by the notch
 `alignItems: 'center'` Horizontal
 `justifyContent: 'center'` Vertical
 
-Images
+### Images
+
 When using require it will bundle the image into the app which will increase the size
-Render local/static images `<Image height={'50px'} source={require('./assets/profile.png')} />`
-For network images we pass an object with height and width defined `<Image  source={{ width:200, height: 300, uri: "https://picsum.photos/200/300" }} />`
+Render local/static images `<Image style={styles.image} source={require('./assets/profile.png')} />`
+For network images we pass an object with uri, height and width defined `<Image  source={{ width:200, height: 300, uri: "https://picsum.photos/200/300" }} />`
+We can use `loadingIndicatorSource` to add a loading image for until network image is displayed
+
+### Touchable
+
+By using touchables we can make anything touchable
+There're are different types of touchables depending on which feedback we want to give
+
+## APIs
+
+### Alert
+
+    Alert.alert(
+      'Alert Title',
+      'Alert Msg',
+      [{Array of buttons}]);
+
+    Alert.prompt(
+      'Prompt Title',
+      'Prompt Msg',
+      callback function to handle the text user enters(called when user clicks OK)
+    )
+
+### StyleSheet
+
+Uses javascript properties not CSS(names are inspired by CSS)
+We can use inline styling or use plain javascript objects directly
+
+    StyleSheet.create();
+
+The **create** method validates the properties in the styles we pass as objects
+
+    style={[style.text, textStyle]}
+
+Multiple style objects can be passed, the result would be a combination.
+The object on the right(textStyle) will overrides the properties on the left
+
+Styles can be extracted and be kept in a different file and import
+**But the convention is to define the styles below the component**
+
+### Platform
+
+This module can be used to add platform specific code
+`paddingTop: Platform.OS === 'android'? StatusBar.currentHeight : 0`
